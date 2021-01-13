@@ -1,0 +1,112 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "AmesInLove - API",
+        "description": "Documentation of Core API for AmesInLove",
+        "version": "0.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost"
+        }
+    ],
+    "components": {
+        "schemas": {
+            "resource_id": {
+                "description": "The unique identifier of a resource",
+                "type": "integer",
+                "minimum": 1,
+                "example": "1"
+            },
+            "auth_resource": {
+                "required": [
+                    "logged_in_user",
+                    "token"
+                ],
+                "properties": {
+                    "logged_in_user": {
+                        "$ref": "#/components/schemas/user_resource"
+                    },
+                    "token": {
+                        "description": "The token",
+                        "type": "string",
+                        "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTc3ZjA3MTc1NWU3YjRiMjM3NDBhNTM1MDkxNDA1NzI0YjViNTRlNDQzYjhjZmI3ZDZmYzBmYWUzZGM4OTBhM2VjZDAwYjQ3OGJmZTgwOTEiLCJpYXQiOjE2MDA3ODExMDEsIm5iZiI6MTYwMDc4MTEwMSwiZXhwIjoxNjMyMzE3MTAxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.R_8MKAEf2rFf8qzQceaCq7cYdecXEeX2pNWoxEY5lBPnk_sj37BqQV8BMZrnYYY2w6kOjVmUCIJtu47RzlnDIB6nyKC5SGbg-S6ImfsrYOyx5R2w4cMKStc9jzJ9xq5Ya2p1-F4eIEM2nUCDhaMFfLB3UiL7fhabRMkT3URIwSdw3DdAj3PQDvkHmtDzi_xfqSfQ88E7xE2WKIVEgr-t6e2UklNGv3ClWQcOoLuOz4O-V37PF10Sy7JeCYe1bKfYYcCnshl8aEXqcLCYbKR6DBBvT2AbwBqleWfECxJM6KI3l0q-TVjX362xCnVYDnOeNntCzRP03kNZ7FBJcRckE86AYWNa_lDVmenuD4QeCYdjxIYEsVRtfvibLO7ZhdLoIl3TrbBBsQJrQ9WPqo3IIY2KLDZE7fllFCA93kBZBo9jiJMpbFMEb-YfdRKYtLnyeR0rU7zrfY9gdGAiOXV35BwTFdtDHj_31VfIbdkN7c60J07iq-6TBCp2io_-FYg0RW-dv1eYl0ZYaQvhZtrdNMJI4dFdCLarHg12LFbbS1YjkIv-khxBVej_cqaW4Bw6kk5ZRG3-F6HrpZwybXi3Ar-efz8hWS_EBQE8KfqoVY1ZncxtkwUWlebIAjaH5ivgTn4X_5RTDgVNsBOByXREJhl2e4iHVVDN2elYWllb-Lo"
+                    }
+                },
+                "type": "object"
+            },
+            "unauthorized_resource": {
+                "required": [
+                    "message"
+                ],
+                "properties": {
+                    "message": {
+                        "description": "The message",
+                        "type": "string",
+                        "example": "Unauthorized"
+                    }
+                },
+                "type": "object"
+            },
+            "message_resource": {
+                "required": [
+                    "message"
+                ],
+                "properties": {
+                    "message": {
+                        "description": "The message",
+                        "type": "string",
+                        "example": "message response"
+                    }
+                },
+                "type": "object"
+            },
+            "date_resource": {
+                "required": [
+                    "date",
+                    "timezone_type",
+                    "timezone"
+                ],
+                "properties": {
+                    "date": {
+                        "description": "the date",
+                        "type": "date",
+                        "example": "2019-01-17 11:00:00.000000"
+                    },
+                    "timezone_type": {
+                        "description": "The timezone type",
+                        "type": "string",
+                        "example": "3"
+                    },
+                    "timezone": {
+                        "description": "The timezone",
+                        "type": "string",
+                        "example": "UTC"
+                    }
+                },
+                "type": "object"
+            },
+            "validate_message_user": {
+                "required": [
+                    "message"
+                ],
+                "properties": {
+                    "message": {
+                        "description": "the message of validation",
+                        "type": "String",
+                        "example": "Successfully created user!"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearer": {
+                "type": "http",
+                "name": "bearerAuth",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
