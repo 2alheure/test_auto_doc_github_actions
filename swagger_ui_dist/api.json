@@ -1,15 +1,35 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "AmesInLove - API",
-        "description": "Documentation of Core API for AmesInLove",
+        "title": "MyAwesomeAPI - API",
+        "description": "Documentation of Core API for MyAwesomeAPI",
         "version": "0.0.0"
     },
     "servers": [
         {
-            "url": "http://localhost"
+            "url": "https://api.example.com",
+            "description": "MyAwesomeAPI - Production environment"
+        },
+        {
+            "url": "https://test.api.example.com",
+            "description": "MyAwesomeAPI - Test environment"
         }
     ],
+    "paths": {
+        "/animals/{animalId}": {
+            "delete": {
+                "tags": [
+                    "Animal"
+                ],
+                "summary": "Delete an Animal",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        }
+    },
     "components": {
         "schemas": {
             "resource_id": {
@@ -24,9 +44,6 @@
                     "token"
                 ],
                 "properties": {
-                    "logged_in_user": {
-                        "$ref": "#/components/schemas/user_resource"
-                    },
                     "token": {
                         "description": "The token",
                         "type": "string",

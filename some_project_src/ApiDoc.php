@@ -2,13 +2,19 @@
 
 /**
  * @OA\Info(
- *   title="AmesInLove - API",
+ *   title="MyAwesomeAPI - API",
  *   version="0.0.0",
- *   description="Documentation of Core API for AmesInLove"
+ *   description="Documentation of Core API for MyAwesomeAPI"
  * )
  *
  * @OA\Server(
- *     url=API_HOST
+ *     url="https://api.example.com",
+ * 	   description="MyAwesomeAPI - Production environment"
+ * )
+ *
+ * @OA\Server(
+ *     url="https://test.api.example.com",
+ * 	   description="MyAwesomeAPI - Test environment"
  * )
  * 
  * @OA\Schema(
