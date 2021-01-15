@@ -1,0 +1,50 @@
+# This is a basic workflow to help you get started with Actions
+
+name: AutoDoc
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Get PHP and composer
+      - name: Adding PHP / Composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          tools: composer
+      
+      # Remove composer.lock and composer.json
+      - name: Removing our composer
+        run: rm composer.*
+      
+      # Install zircote/swagger-php and call it with swagger.php
+      - name: Generating Doc
+        run: composer require zircote/swagger-php
+      - run: php swagger.php
+        
+      # Commit the newly generated api.json
+      - name: Auto commit
+        uses: EndBug/add-and-commit@v6
+        with:
+          add: 'swagger_ui_dist/api.json'
+          message: Automaticaly generated documentation
