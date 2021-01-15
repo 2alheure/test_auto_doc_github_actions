@@ -14,7 +14,8 @@
  *
  * @OA\Server(
  *     url="https://test.api.example.com",
- * 	   description="MyAwesomeAPI - Test environment"
+ * 	   description="MyAwesomeAPI - Test environment",
+ * 	   non_existing_key="Non existing value"
  * )
  * 
  * @OA\Schema(
